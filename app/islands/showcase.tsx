@@ -1,4 +1,5 @@
 import { useState } from 'hono/jsx';
+import Input from './input';
 
 export default function Showcase() {
   const [width, setWidth] = useState(300);
@@ -20,32 +21,13 @@ export default function Showcase() {
   return (
     <div>
       <div>
-        <label for='srcUrl'>Source URL:</label>
-        <input
-          class='border border-gray-400  rounded-lg ml-2'
-          name='srcUrl'
-          type='text'
-          onInput={handleSrcUrlChange}
+        <Input
+          label='Source URL'
+          value={srcUrl}
+          onChange={handleSrcUrlChange}
         />
-      </div>
-      <div>
-        <label for='width'>Width:</label>
-        <input
-          name='width'
-          value={width}
-          type='number'
-          onInput={handleWidthChange}
-        />
-      </div>
-
-      <div>
-        <label for='height'>Height:</label>
-        <input
-          name='height'
-          type='number'
-          value={height}
-          onInput={handleHeightChange}
-        />
+        <Input label='Width' value={width} onChange={handleWidthChange} />
+        <Input label='Height' value={height} onChange={handleHeightChange} />
       </div>
       <div>
         <iframe
@@ -53,6 +35,7 @@ export default function Showcase() {
           width={width}
           height={height}
           referrerpolicy='same-origin'
+          class={'border border-gray-400 rounded-lg mt-4'}
         />
       </div>
     </div>
